@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mis hábitos</title>
+  <meta name="description" content="Aplicación sencilla para seguir tus hábitos diarios">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Ir al contenido</a>
+
+  <header class="cabecera">
+    <div class="cabecera__contenido">
+      <div class="cabecera__texto">
+        <p id="fecha-hoy" class="cabecera__fecha"></p>
+        <h1>Mis hábitos</h1>
+        <p id="mensaje-motivacional" class="cabecera__mensaje" aria-live="polite"></p>
+        <p id="frase-dia" class="cabecera__frase"></p>
+      </div>
+
+      <div id="anillo-progreso" class="anillo" role="progressbar" aria-labelledby="anillo-etiqueta" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <span id="anillo-etiqueta" class="sr-only">Progreso de hoy</span>
+        <div class="anillo__centro">
+          <span id="anillo-numero" class="anillo__numero">0/0</span>
+          <span class="anillo__texto">hoy</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" class="principal">
+    <aside class="lateral" aria-label="Semana y nuevo hábito">
+      <section class="panel" aria-labelledby="titulo-semana">
+        <h2 id="titulo-semana">Esta semana</h2>
+        <ol id="tira-semana" class="semana"></ol>
+        <p id="texto-semana" class="nota"></p>
+      </section>
+
+      <section class="panel" aria-labelledby="titulo-nuevo">
+        <h2 id="titulo-nuevo">Nuevo hábito</h2>
+        <form id="form-habito" class="formulario" novalidate>
+          <label for="input-nombre">¿Qué quieres empezar a repetir?</label>
+          <div class="formulario__fila">
+            <input id="input-nombre" name="nombre" type="text" maxlength="40" autocomplete="off" placeholder="Ej.: Leer 15 minutos" aria-describedby="error-nombre">
+            <button type="submit" class="boton boton--principal">Añadir</button>
+          </div>
+          <p id="error-nombre" class="formulario__error" role="alert"></p>
+        </form>
+      </section>
+    </aside>
+
+    <section class="lista-seccion" aria-labelledby="titulo-lista">
+      <div class="lista-seccion__cabecera">
+        <h2 id="titulo-lista">Tus hábitos</h2>
+        <p id="resumen-lista" class="nota"></p>
+      </div>
+
+      <div id="lista-vacia" class="vacio" hidden>
+        <p>Todavía no tienes hábitos. Un hábito pequeño que repites vale más que uno grande que abandonas.</p>
+        <button type="button" id="boton-primer-habito" class="boton boton--principal">Crear mi primer hábito</button>
+      </div>
+
+      <ul id="lista-habitos" class="lista"></ul>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>Tus datos se guardan solo en este navegador.</p>
+  </footer>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal__caja" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" aria-describedby="modal-texto">
+      <h2 id="modal-titulo"></h2>
+      <p id="modal-texto" class="modal__texto"></p>
+      <div class="modal__acciones">
+        <button type="button" id="modal-cancelar" class="boton boton--claro">Cancelar</button>
+        <button type="button" id="modal-confirmar" class="boton boton--peligro">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="avisos" class="avisos" aria-live="polite"></div>
+
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>
